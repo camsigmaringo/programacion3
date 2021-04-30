@@ -23,7 +23,7 @@ return (
     <div className="Perfil" id={this.props.infoPersona.login.uuid} key={props.key}> 
 
 
-<h2> {props.infoPersona.name.first}</h2>
+<h2> {props.infoPersona.name.first} {props.infoPersona.name.last}</h2>
 
 
 <img className="imgPerfil" src={props.infoPersona.picture.medium} alt={props.infoPersona.picture.medium}/>

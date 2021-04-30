@@ -46,6 +46,35 @@ agregarTarjeta(){
   listaPersonas: listaNueva
     })
     }
+
+    filtrarNombre(){
+      var filtronombre = document.getElementById("nombreFiltro").value
+     let resultado= this.state.listaPersonas.filter(persona=> persona.name.first === filtronombre)
+    
+    this.setState({
+    listaPersonas: resultado
+     })
+    }
+
+    filtrarApellido(){
+      var filtroapellido = document.getElementById("apellidoFiltro").value
+     let resultado= this.state.listaPersonas.filter(info=> info.name.last === filtroapellido)
+    
+    this.setState({
+    listaPersonas: resultado
+     })
+   
+      }
+      filtrarEdad(){
+        var filtroedad = document.getElementById("edadFiltro").value
+        let resultado= this.state.listaPersonas.filter((info)=>{
+          let infoString= info.dob.age.toString()
+          return infoString === filtroedad})
+      
+      this.setState({
+      listaPersonas: resultado
+       })
+      }
 render(){
   const listaPersonas = this.state.listaPersonas
   if(listaPersonas.length > 0){
@@ -55,12 +84,28 @@ render(){
  return (
 <div className='contenido'> 
 
-    <p>{"hola"}</p>
+    
     <input  class="uk-button uk-button-default " id='cantidadTarjetas' placeholder='Ingresa la cantidad deseada'/>
     <button onClick= {(event)=> this.agregarTarjeta()}>Agregar Personas</button>
 
 
-
+    <div className="uk-inline">
+    {/* <button type="button" style={{margin: "5px"}}>FILTRAR</button> */}
+    <div uk-dropdown="pos: right-center">
+        <ul className="uk-nav uk-dropdown-nav">
+            <li><input id='nombreFiltro' placeholder='Ingresa el nombre'/> 
+            <button style={{textAlign:'center'}} onClick= {(event)=> this.filtrarNombre()}>FILTRAR NOMBRE</button>
+            </li>
+            <li><input id='apellidoFiltro' placeholder='Ingresa el apellido'/>
+            <button style={{textAlign:'center'}} onClick= {(event)=> this.filtrarApellido()}>FILTRAR APELLIDO</button>
+            </li>
+            <li><input id='edadFiltro' placeholder='Ingresa la edad'/>
+            <button style={{textAlign:'center'}} onClick= {(event)=> this.filtrarEdad()}>FILTRAR EDAD</button>
+            </li>
+          
+        </ul>
+    </div>
+</div>
     {
         //La info del estado es la que se modifica, poreso uso this.state.infoJson
         this.state.listaPersonas.map((persona, idx)=>{
@@ -84,6 +129,7 @@ render(){
 
 
 }
+
 
 
 
