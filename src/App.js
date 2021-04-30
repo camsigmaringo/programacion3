@@ -2,7 +2,7 @@
 import './App.css';
 import Header from './Components/Header' ;
 import Footer from './Components/Footer';
-// import Perfil from './components/Perfil';
+import Perfil from './Components/Perfil';
 import React, {Component} from "react";
 
 class App extends Component {
@@ -15,60 +15,76 @@ class App extends Component {
     }
   }
 componentDidMount(){
-fetch ("https://randomuser.me/api/?results=20")
+fetch ("https://randomuser.me/api/?results=2")
   .then (r=> r.json())
   .then ((resultado) => {
     console.log(resultado)
-    this.setState({listaPersonas: resultado})
+    this.setState({listaPersonas: resultado.results})
     
   })
-
-
+ 
 
 }
 
-render(){
-console.log(this.state.listaPersonas.results[])
- return (//<></>
-  <p>{this.state.listaPersonas[0].name.first}</p>
-    // <div className="App">
-    //   <header className="App-header">
+agregarTarjeta(){
+  var cantidad = document.getElementById("cantidadTarjetas").value
+ fetch('https://randomuser.me/api/?results='+ cantidad )
+ .then(result=> result.json())
+ .then(data=>{
+  var nuevaLista= this.state.listaPersonas.concat(data.results)
+  console.log(nuevaLista)
+ this.setState({
+   listaPersonas: nuevaLista})
+  } )
+ }
 
-    //     <p>
-    //      Users 
-    //     </p>
-    
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //     </a>
-    //   </header>
-
-    // </div>
-  
-//Foto del contacto.
-// Apellido
-// Nombre del contacto.
-// Email.
-// Fecha de nacimiento y edad entre paréntesis.
-
-//   <div className="App">
-//        <Header/>
-//        <div className="tarjetas">
+ borrarPersona(id){
    
-//     </div>
-//         <Footer/>
-//     </div>
-   );
+  let listaNueva= this.state.listaPersonas.filter(persona=> persona.id !== id)
+  
+    this.setState({
+  listaPersonas: listaNueva
+    })
+    }
+render(){
+  const listaPersonas = this.state.listaPersonas
+  if(listaPersonas.length > 0){
+    console.log(this.state.listaPersonas[0].name.first)
+  }
+    
+ return (
+<div className='contenido'> 
+
+    <p>{"hola"}</p>
+    <input  class="uk-button uk-button-default " id='cantidadTarjetas' placeholder='Ingresa la cantidad deseada'/>
+    <button onClick= {(event)=> this.agregarTarjeta()}>Agregar Personas</button>
+
+
+
+    {
+        //La info del estado es la que se modifica, poreso uso this.state.infoJson
+        this.state.listaPersonas.map((persona, idx)=>{
+          return <Perfil 
+
+          infoPersona = {persona} key={idx} 
+
+
+        onDelete={this.borrarPersona.bind(this)} 
+          id={persona.id} colorFondo='white'
+                 />
+        
+        })
+      }
+</div>
+  );
   
 }// llave de la clase
 
 
 
 
-
 }
+
+
+
 export default App;
