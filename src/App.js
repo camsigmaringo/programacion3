@@ -15,7 +15,7 @@ class App extends Component {
     }
   }
 componentDidMount(){
-fetch ("https://randomuser.me/api/?results=2")
+fetch ("https://randomuser.me/api/?results=5")
   .then (r=> r.json())
   .then ((resultado) => {
     console.log(resultado)
@@ -38,9 +38,9 @@ agregarTarjeta(){
   } )
  }
 
- borrarPersona(id){
+ borrarPersona(clave){
    
-  let listaNueva= this.state.listaPersonas.filter(persona=> persona.id !== id)
+  let listaNueva= this.state.listaPersonas.filter(persona=> persona.id !== clave)
   
     this.setState({
   listaPersonas: listaNueva
@@ -85,12 +85,12 @@ render(){
 <div className='contenido'> 
 
     
-    <input  class="uk-button uk-button-default " id='cantidadTarjetas' placeholder='Ingresa la cantidad deseada'/>
+    <input  className="uk-button uk-button-default " id='cantidadTarjetas' placeholder='Ingresa la cantidad deseada'/>
     <button onClick= {(event)=> this.agregarTarjeta()}>Agregar Personas</button>
 
 
     <div className="uk-inline">
-    {/* <button type="button" style={{margin: "5px"}}>FILTRAR</button> */}
+   
     <div uk-dropdown="pos: right-center">
         <ul className="" style={{listStyle: 'none', padding: 0}}>
             <li><input style={{marginBottom: 15}} id='nombreFiltro' placeholder='Ingresa el nombre'/> 
@@ -107,7 +107,7 @@ render(){
     </div>
 </div>
     {
-        //La info del estado es la que se modifica, poreso uso this.state.infoJson
+      
         this.state.listaPersonas.map((persona, idx)=>{
           return <Perfil 
 
@@ -115,7 +115,7 @@ render(){
 
 
         onDelete={this.borrarPersona.bind(this)} 
-          id={persona.id} colorFondo='white'
+          clave={persona.id} 
                  />
         
         })
