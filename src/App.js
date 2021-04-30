@@ -92,11 +92,11 @@ render(){
     <div className="uk-inline">
     {/* <button type="button" style={{margin: "5px"}}>FILTRAR</button> */}
     <div uk-dropdown="pos: right-center">
-        <ul className="uk-nav uk-dropdown-nav">
-            <li><input id='nombreFiltro' placeholder='Ingresa el nombre'/> 
+        <ul className="" style={{listStyle: 'none', padding: 0}}>
+            <li><input style={{marginBottom: 15}} id='nombreFiltro' placeholder='Ingresa el nombre'/> 
             <button style={{textAlign:'center'}} onClick= {(event)=> this.filtrarNombre()}>FILTRAR NOMBRE</button>
             </li>
-            <li><input id='apellidoFiltro' placeholder='Ingresa el apellido'/>
+            <li><input style={{marginBottom: 15}} id='apellidoFiltro' placeholder='Ingresa el apellido'/>
             <button style={{textAlign:'center'}} onClick= {(event)=> this.filtrarApellido()}>FILTRAR APELLIDO</button>
             </li>
             <li><input id='edadFiltro' placeholder='Ingresa la edad'/>

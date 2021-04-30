@@ -23,7 +23,28 @@
 .App-link {
   color: #61dafb;
 }
+.Perfil{
+  display:flex;
+  width: 100%;
+position: relative;
+margin-bottom: 10px;
+box-shadow: 5px 6px 6px 0px #aaa;
+border-radius: 20px;
+}
+.infoPersona{width: 100%; padding-left: 10px;}
 
+.boton-borrar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: 0;
+  color: red;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.imgPerfil{height: 100px; width: 100px; margin: auto;}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

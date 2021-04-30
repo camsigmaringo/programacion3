@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Perfil extends Component {
   constructor(props){
     super(props);
@@ -23,15 +24,17 @@ return (
     <div className="Perfil" id={this.props.infoPersona.login.uuid} key={props.key}> 
 
 
+<img className="imgPerfil" src={props.infoPersona.picture.medium} alt={props.infoPersona.picture.medium}/>
+<div className="infoPersona">
 <h2> {props.infoPersona.name.first} {props.infoPersona.name.last}</h2>
 
 
-<img className="imgPerfil" src={props.infoPersona.picture.medium} alt={props.infoPersona.picture.medium}/>
 
 {/* <p> location:{props.mostrarPerfil.location}  </p> */}
     <p> Email:{props.infoPersona.email}  </p>
 <p> date: {props.infoPersona.dob.date}</p>
 <p> edad: {props.infoPersona.dob.age}</p>
+
 <button  onClick= {(event)=>this.verDetalle("block")}> VER DETALLE </button>
 <div  style={{display: this.state.display}}>
                     <p>Calle y Número:  {this.props.infoPersona.location.street.number}  {this.props.infoPersona.location.street.name} </p>
@@ -42,11 +45,12 @@ return (
                     <p>Registrado:{this.props.infoPersona.registered.date}</p>
                     <p>Teléfono: {this.props.infoPersona.phone}</p>
                 </div>
-
-                <button
+                </div>
+                <button className="boton-borrar"
                 onClick= {this.props.onDelete.bind(this, this.props.id)}
-                >BORRAR</button>
+                >X</button>
     </div>
+
 )
 
 }
