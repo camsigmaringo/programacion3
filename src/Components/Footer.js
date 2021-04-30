@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 function Footer () {
 
     return (
-        <div className="Header">
+        <div className="Footer">
         <h1>
-            Camille Sigmaringo Marcos Hogg Ian Jamui
+            Camille Sigmaringo Marcos Hogg
              </h1>
 
         </div> 

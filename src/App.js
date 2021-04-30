@@ -83,7 +83,7 @@ render(){
     
  return (
 <div className='contenido'> 
-
+<Header/>
     
     <input  className="uk-button uk-button-default " id='cantidadTarjetas' placeholder='Ingresa la cantidad deseada'/>
     <button onClick= {(event)=> this.agregarTarjeta()}>Agregar Personas</button>
@@ -122,7 +122,7 @@ render(){
       }
 </div>
   );
-  
+  <Footer/>
 }// llave de la clase
 
 
